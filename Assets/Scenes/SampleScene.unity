@@ -878,7 +878,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1350034517}
-        m_TargetAssemblyTypeName: 
+        m_TargetAssemblyTypeName: uiManager, Assembly-CSharp
         m_MethodName: Play
         m_Mode: 1
         m_Arguments:
@@ -1202,6 +1202,7 @@ MonoBehaviour:
   scoreText: {fileID: 1921004049}
   audioManager: {fileID: 1311812564}
   CarController: {fileID: 574610787}
+  ui: {fileID: 0}
 --- !u!4 &1350034518
 Transform:
   m_ObjectHideFlags: 0

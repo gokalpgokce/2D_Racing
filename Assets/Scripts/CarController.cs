@@ -36,7 +36,7 @@ public class CarController : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D col) {
         
         if(col.gameObject.tag == "Enemy Car"){
-            Destroy(gameObject);
+            Destroy(gameObject);  // burada objeyi destroy etmek yerine tekrar spawn etmek gerek performans için.
             ui.gameOverActiveted();
             audioManager.carSound.Stop();
             audioManager.maxSpeedSound.Stop();

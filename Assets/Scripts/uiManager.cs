@@ -45,6 +45,7 @@ public class uiManager : MonoBehaviour
         SceneManager.LoadScene("SampleScene");  // menuscene de bu fonksiyonu kullaniyor. 
                                                 //score play tusunun altinda artmaya devam ediyor fakat gorunmez hale getirdim.
                                                 //hic olmamasi nasil saglarir?
+        Time.timeScale = 1;                                           
     }
 
     public void Menu(){
@@ -58,14 +59,21 @@ public class uiManager : MonoBehaviour
         if (Time.timeScale == 1 && audioManager.carSound.isPlaying == true){
             Time.timeScale = 0;
             audioManager.carSound.Stop();
+            ui.gameOverActiveted();
         }
         else if(Time.timeScale == 1 && audioManager.maxSpeedSound.isPlaying == true){
             Time.timeScale = 0;
             audioManager.maxSpeedSound.Stop();
+            ui.gameOverActiveted();
         }
         else if(Time.timeScale == 0 && audioManager.carSound.isPlaying == false){
             Time.timeScale = 1;
-            audioManager.carSound.Play();
+            gameOver = false;
+            audioManager.maxSpeedSound.Play();
+            foreach (Button button in buttons)
+            {
+                button.gameObject.SetActive(false);
+            }
         }
     }
 }
