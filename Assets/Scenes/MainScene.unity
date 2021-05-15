@@ -1451,7 +1451,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   carSound: {fileID: 1311812562}
   maxSpeedSound: {fileID: 1311812565}
-  isMute: {fileID: 1220281698}
+  muteToggle: {fileID: 1220281698}
 --- !u!82 &1311812565
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1585,6 +1585,8 @@ MonoBehaviour:
   audioManager: {fileID: 1311812564}
   CarController: {fileID: 574610787}
   ui: {fileID: 1350034517}
+  mainMenu: {fileID: 0}
+  optionsMenu: {fileID: 0}
 --- !u!4 &1350034518
 Transform:
   m_ObjectHideFlags: 0

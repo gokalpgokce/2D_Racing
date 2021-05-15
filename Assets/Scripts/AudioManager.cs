@@ -7,27 +7,23 @@ public class AudioManager : MonoBehaviour
 {
     public AudioSource carSound;
     public AudioSource maxSpeedSound;
-    public Toggle isMute;
+    public Toggle muteToggle;
     
     // Start is called before the first frame update
     void Start()
     {
-        
+        muteToggle.isOn = AudioListener.volume == 1;
     }
 
     // Update is called once per frame
     void Update()
     {
-       soundToggle(isMute.isOn);
+       
     }
 
     public void soundToggle (bool isMute){
-        if(isMute == true){
-            AudioListener.volume = 1;
-        }
-        else if (isMute == false){
-            AudioListener.volume = 0;
-        }
+
+        AudioListener.volume = muteToggle.isOn ? 1 : 0;
     }
 
 }
