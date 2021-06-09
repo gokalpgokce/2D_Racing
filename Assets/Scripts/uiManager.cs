@@ -13,18 +13,24 @@ public class uiManager : MonoBehaviour
     public AudioManager audioManager;
     public CarController CarController;
     public uiManager ui;
-    // Start is called before the first frame update
+    public GameObject mainMenu;
+    public GameObject optionsMenu;
     void Start()
     {
         gameOver = false;
         score = 0;
         InvokeRepeating("scoreUpdate",4.0f,0.2f);
+
+        Scene scene_name = SceneManager.GetActiveScene();
+        Debug.Log("aktif sahne" + scene_name);
     }
 
-    // Update is called once per frame
     void Update()
     {
-        scoreText.text = "Score: "+ score;
+        if(scoreText != null){
+            scoreText.text = "Score: "+ score;
+        }
+        
     }
 
     void scoreUpdate(){
@@ -42,13 +48,16 @@ public class uiManager : MonoBehaviour
     }
 
     public void Play(){
-        SceneManager.LoadScene("SampleScene");  // menuscene de bu fonksiyonu kullaniyor. 
-                                                //score play tusunun altinda artmaya devam ediyor fakat gorunmez hale getirdim.
-                                                //hic olmamasi nasil saglarir?
+        SceneManager.LoadScene("MainScene");
+        Time.timeScale = 1;                                           
     }
 
     public void Menu(){
         SceneManager.LoadScene("MenuScene");   // menude arac secımı olsun (2 arac) araca gore ses de degıssın
+    }
+    public void Options(){
+        optionsMenu.SetActive(true);
+        mainMenu.SetActive(false);
     }
     public void Exit(){
         Application.Quit();
@@ -58,14 +67,25 @@ public class uiManager : MonoBehaviour
         if (Time.timeScale == 1 && audioManager.carSound.isPlaying == true){
             Time.timeScale = 0;
             audioManager.carSound.Stop();
+            ui.gameOverActiveted();
         }
         else if(Time.timeScale == 1 && audioManager.maxSpeedSound.isPlaying == true){
             Time.timeScale = 0;
             audioManager.maxSpeedSound.Stop();
+            ui.gameOverActiveted();
         }
         else if(Time.timeScale == 0 && audioManager.carSound.isPlaying == false){
             Time.timeScale = 1;
-            audioManager.carSound.Play();
+            gameOver = false;
+            audioManager.maxSpeedSound.Play();
+            foreach (Button button in buttons)
+            {
+                button.gameObject.SetActive(false);
+            }
         }
+    }
+    public void BackButton(){
+        optionsMenu.SetActive(false);
+        mainMenu.SetActive(true);
     }
 }

@@ -11,7 +11,6 @@ public class CarSpawner : MonoBehaviour
     //float timer;
     private float SpawnDuration = 1.4f;
 
-    // Start is called before the first frame update
     void Start()
     {
         //timer = delayTimer;
@@ -19,17 +18,9 @@ public class CarSpawner : MonoBehaviour
         StartCoroutine(DifficultRoutine());
     }
 
-    // Update is called once per frame
     void Update()
     {
-        // burda update kullanarak spawn suresunu 1 sn yapiyorduk. alttaki SpawnRoutine fonksiyonuyla bunu yapabiliyoruz.
-        //timer -= Time.deltaTime;
-        //if(timer <= 0){
-        //    Vector3 carPos = new Vector3(Random.Range(-maxPos,maxPos),transform.position.y,transform.position.z);
-        //    carNo = Random.Range(0,6);
-        //    Instantiate(cars[carNo], carPos,transform.rotation);
-        //    timer = delayTimer;
-        //}
+        
     }
 
     IEnumerator SpawnRoutine(){
@@ -39,7 +30,6 @@ public class CarSpawner : MonoBehaviour
             carNo = Random.Range(0,6);
             Instantiate(cars[carNo], carPos,transform.rotation);
             yield return new WaitForSeconds(SpawnDuration);
-            //Debug.Log("2");
         }
     }
 
